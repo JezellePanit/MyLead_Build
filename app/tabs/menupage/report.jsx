@@ -17,6 +17,9 @@ import { Colors } from "../../../constants/Color";
 import { Picker } from "@react-native-picker/picker";
 import { addDoc, collection, serverTimestamp, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
+import { useCopilot, CopilotStep, walkthroughable } from "react-native-copilot";
+const WalkthroughableView = walkthroughable(View);
+
 
 export default function Report() {
   const router = useRouter();
@@ -29,6 +32,14 @@ export default function Report() {
   const [otherCategory, setOtherCategory] = useState("");
   const [lockedEmail, setLockedEmail] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const { start } = useCopilot();
+
+useEffect(() => {
+  setTimeout(() => {
+    start();
+  }, 700);
+}, []);
 
   const categories = [
     "Problems / Issues",
@@ -209,6 +220,12 @@ export default function Report() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <CopilotStep
+  text="If something is outdated or incorrect, tap Report so we can update the information."
+  order={6}
+  name="report"
+>
+  <WalkthroughableView>
       <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 50 }}>
         <View style={styles.header}>
           <Text style={styles.header_text}>Report</Text>
@@ -409,6 +426,8 @@ export default function Report() {
           </View>
         )}
       </ScrollView>
+        </WalkthroughableView>
+</CopilotStep>
     </SafeAreaView>
   );
 }

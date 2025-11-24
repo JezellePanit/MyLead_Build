@@ -14,7 +14,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import polyline from "@mapbox/polyline";
 
-const GOOGLE_MAPS_API_KEY = Constants.expoConfig?.extra?.GOOGLE_MAPS_API_KEY || "";
+const apiKey = Constants.expoConfig.extra.googleMapsApiKey;
 
 export default function EventsLocation() {
   const insets = useSafeAreaInsets();
@@ -130,7 +130,7 @@ export default function EventsLocation() {
       const travelMode = mode === "MOTORCYCLE" ? "driving" : mode.toLowerCase();
 
       try {
-        const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${travelMode}&alternatives=true&key=${GOOGLE_MAPS_API_KEY}`;
+        const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${travelMode}&alternatives=true&key=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
 

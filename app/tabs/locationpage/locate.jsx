@@ -26,7 +26,7 @@ export default function Locate() {
   const [userLocation, setUserLocation] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
 
-  const [showGuideLegend, setShowGuideLegend] = useState(false);
+  const [showGuideLegend, setShowGuideLegend] = useState(true);
   const [showLegend, setShowLegend] = useState(false);
   const [filterType, setFilterType] = useState("All");
 

@@ -2,6 +2,7 @@ import "dotenv/config";
 
 export default ({ config }) => ({
   ...config,
+  owner: "jezellelois",
   name: "MyLead",
   slug: "myleadapplication",
   version: "1.0.0",
@@ -24,7 +25,7 @@ export default ({ config }) => ({
     supportsTablet: true,
     buildNumber: "1.0.0",
     config: {
-      googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
+      googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY,
     },
     infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
@@ -45,7 +46,7 @@ export default ({ config }) => ({
     ],
     config: {
       googleMaps: {
-        apiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
+        apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY,
       },
     },
   },
@@ -54,6 +55,7 @@ export default ({ config }) => ({
     bundler: "metro",
     output: "static",
     favicon: "./assets/images/favicon.png",
+    googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY,
   },
 
   plugins: [
@@ -77,9 +79,11 @@ export default ({ config }) => ({
     eas: {
       projectId: "83a4a2c7-4d2e-4ad8-8aed-dad0b6954494",
     },
-    googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY ?? "",
-    expoPublicGoogleMapsApiKey:
-      process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY ?? "",
+
+    // ✅ public Google Maps API Key for web + client-side
+    googleMapsApiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY,
+
+    // EAS build channel
     releaseChannel: process.env.EAS_BUILD_PROFILE || "development",
   },
 });
