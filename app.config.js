@@ -7,7 +7,7 @@ export default ({ config }) => ({
   slug: "myleadapplication",
   version: "1.0.0",
   orientation: "portrait",
-  icon: "./assets/images/LittleLogo.png",
+  icon: "./assets/images/LittleLogo1.png",
   scheme: "mylead",
   userInterfaceStyle: "automatic",
   newArchEnabled: true,
@@ -36,7 +36,7 @@ export default ({ config }) => ({
     package: "com.mylead",
     versionCode: 1,
     adaptiveIcon: {
-      foregroundImage: "./assets/images/LittleLogo.png",
+      foregroundImage: "./assets/images/LittleLogo1.png",
       backgroundColor: "#ffffff",
     },
     permissions: [
